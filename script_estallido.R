@@ -1,5 +1,5 @@
 # setear librerías de trabajo
-library(tidyverse); library(gganimate)
+library(tidyverse); library(gganimate); library(transformr); library(imputeTS)
 
 # importando dataset
 dataset <- read.delim("dataset.csv", sep = ";")
@@ -15,14 +15,53 @@ length(na.omit(dataset$poverty_5.50))
 length(na.omit(dataset$poverty_1.90))
 # las últimas dos tienen la misma, asi que usaremos el umbra más bajo
 
-dataset$sch_enroll
+# usar un dataset más pequeño para ploteo
+data2 <- dataset[dataset$year >= 1980, c(1,3,5,8,9)]
+
+# imputar datos perdidos
+paises <- unique(data2$ctry_code)
+for(i in paises){
+  # la función na_interpolate requiere como mínimo 2 valores no nulos
+  # imputamos pobreza
+  if(sum(!is.na(data2$poverty_1.90[data2$ctry_code==i]))>2){
+    data2$poverty_1.90[data2$ctry_code==i] <- data2$poverty_1.90[data2$ctry_code==i] %>% 
+      na_interpolation()
+  } else {
+    data2 <- data2[!data2$ctry_code==i,]
+  }
+  # imputamos matrícula escolar
+  if(sum(!is.na(data2$sch_enroll[data2$ctry_code==i]))>2){
+    data2$sch_enroll[data2$ctry_code==i] <- data2$sch_enroll[data2$ctry_code==i] %>% 
+      na_interpolation()
+  } else {
+    data2 <- data2[!data2$ctry_code==i,]
+  }
+  #imputamos esperanza de vida
+  if(sum(!is.na(data2$lifexpect[data2$ctry_code==i]))>2){
+    data2$lifexpect[data2$ctry_code==i] <- data2$lifexpect[data2$ctry_code==i] %>% 
+      na_interpolation()
+  } else {
+    data2 <- data2[!data2$ctry_code==i,]
+  }
+}
+rm(i, paises)
 
 # primer plot animado
-ggplot(dataset, aes(poverty_1.90, sch_enroll, size = lifexpect, colour = ctry)) +
-  geom_jitter() +
-  guides(colour = F) 
-## desde acá agregar líneas de animación
-  
+desa_humano <- ggplot(data2, aes(poverty_1.90, sch_enroll, 
+                                   size = lifexpect, 
+                                   label = ctry_code,
+                                   colour = ifelse(ctry_code=="CHL", "red", "black"))) +
+  theme_bw() +
+  geom_text() +
+  guides(colour = F) +
+  theme(text = element_text(size = 25)) +
+  labs(title = "Año: {frame_time}", 
+       x = "% personas viviendo con menos de 1.90 USD al día",
+       y = "% bruto matrícula educación primaria",
+       size = "Esperanza \nde vida") +
+  transition_time(year)
 
+animate(desa_humano,  duration = 30, width = 900)
 
+# se pueden alterar dimensiones de gráfica con width = x, height = y
 

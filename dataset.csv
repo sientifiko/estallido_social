@@ -1,5 +1,4 @@
 Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross) ;Poverty headcount ratio at national poverty lines (% of population) ;Poverty headcount ratio at $5.50 a day (2011 PPP) (% of population) ;Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) ;Life expectancy at birth, total (years) ;deuda_hogares;diez_porc_mas_rico;uno_porc_mas_rico;Mobile cellular subscriptions (per 100 people) ;Secure Internet servers (per 1 million people) 
-1970;Latin America & Caribbean;LCN;1970LCN;105.5529175;;;;60.43082188;;;;;
 1970;Brazil;BRA;1970BRA;;;;;58.911;;;;;
 1970;Bolivia;BOL;1970BOL;88.93090057;;;;45.568;;;;;
 1970;Chile;CHL;1970CHL;117.481102;;;;62.254;;;;;
@@ -35,7 +34,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1970;Puerto Rico;PRI;1970PRI;;;;;71.53553659;;;;;
 1970;Suriname;SUR;1970SUR;;;;;62.911;;;;;
 1970;Trinidad and Tobago;TTO;1970TTO;;;;;64.7;;;;;
-1971;Latin America & Caribbean;LCN;1971LCN;107.4013138;;;;60.87606039;;;;;
 1971;Brazil;BRA;1971BRA;;;;;59.332;;;;;
 1971;Bolivia;BOL;1971BOL;88.57391357;;;;45.999;;;;;
 1971;Chile;CHL;1971CHL;124.4307175;;;;62.895;;;;;
@@ -71,7 +69,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1971;Puerto Rico;PRI;1971PRI;119.9724884;;;;71.85909756;;;;;
 1971;Suriname;SUR;1971SUR;128.6622925;;;;63.199;;;;;
 1971;Trinidad and Tobago;TTO;1971TTO;114.5652695;;;;64.844;;;;;
-1972;Latin America & Caribbean;LCN;1972LCN;107.6109695;;;;61.32176697;;;;;
 1972;Brazil;BRA;1972BRA;;;;;59.739;;;;;
 1972;Bolivia;BOL;1972BOL;90.00283813;;;;46.441;;;;;
 1972;Chile;CHL;1972CHL;125.3566589;;;;63.555;;;;;
@@ -107,7 +104,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1972;Puerto Rico;PRI;1972PRI;122.1801605;;;;72.16946341;;;;;
 1972;Suriname;SUR;1972SUR;127.6499023;;;;63.47;;;;;
 1972;Trinidad and Tobago;TTO;1972TTO;113.9324799;;;;65.003;;;;;
-1973;Latin America & Caribbean;LCN;1973LCN;108.8012085;;;;61.76286933;;;;;
 1973;Brazil;BRA;1973BRA;;;;;60.132;;;;;
 1973;Bolivia;BOL;1973BOL;92.41235352;;;;46.893;;;;;
 1973;Chile;CHL;1973CHL;126.2494202;;;;64.231;;;;;
@@ -143,7 +139,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1973;Puerto Rico;PRI;1973PRI;122.4502869;;;;72.46473171;;;;;
 1973;Suriname;SUR;1973SUR;130.1850739;;;;63.724;;;;;
 1973;Trinidad and Tobago;TTO;1973TTO;113.0298462;;;;65.177;;;;;
-1974;Latin America & Caribbean;LCN;1974LCN;109.2613373;;;;62.19698183;;;;;
 1974;Brazil;BRA;1974BRA;;;;;60.513;;;;;
 1974;Bolivia;BOL;1974BOL;94.61704254;;;;47.355;;;;;
 1974;Chile;CHL;1974CHL;126.3202286;;;;64.917;;;;;
@@ -179,7 +174,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1974;Puerto Rico;PRI;1974PRI;120.7023163;;;;72.73790244;;;;;
 1974;Suriname;SUR;1974SUR;133.3435974;;;;63.964;;;;;
 1974;Trinidad and Tobago;TTO;1974TTO;111.9018326;;;;65.368;;;;;
-1975;Latin America & Caribbean;LCN;1975LCN;108.9512711;;;;62.62346907;;;;;
 1975;Brazil;BRA;1975BRA;;;;;60.884;;;;;
 1975;Bolivia;BOL;1975BOL;99.43927002;;;;47.828;;;;;
 1975;Chile;CHL;1975CHL;123.9176178;;;;65.609;;;;;
@@ -215,7 +209,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1975;Puerto Rico;PRI;1975PRI;114.8874588;;;;72.98246341;;;;;
 1975;Suriname;SUR;1975SUR;128.547821;;;;64.201;;;;;
 1975;Trinidad and Tobago;TTO;1975TTO;111.6623688;;;;65.572;;;;;
-1976;Latin America & Caribbean;LCN;1976LCN;108.7334213;;;;63.04035696;;;;;
 1976;Brazil;BRA;1976BRA;;;;;61.243;;;;;
 1976;Bolivia;BOL;1976BOL;101.5459595;;;;48.312;;;;;
 1976;Chile;CHL;1976CHL;120.5345383;;;;66.307;;;;;
@@ -251,7 +244,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1976;Puerto Rico;PRI;1976PRI;112.0578079;;;;73.19082927;;;;;
 1976;Suriname;SUR;1976SUR;111.8457031;;;;64.445;;;;;
 1976;Trinidad and Tobago;TTO;1976TTO;114.6886597;;;;65.782;;;;;
-1977;Latin America & Caribbean;LCN;1977LCN;110.97509;;;;63.45043425;;;;;
 1977;Brazil;BRA;1977BRA;;;;;61.595;;;;;
 1977;Bolivia;BOL;1977BOL;98.38282776;;;;48.806;;;;;
 1977;Chile;CHL;1977CHL;119.4073792;;;;67.005;;;;;
@@ -287,7 +279,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1977;Puerto Rico;PRI;1977PRI;114.1892471;;;;73.36131707;;;;;
 1977;Suriname;SUR;1977SUR;124.9055634;;;;64.704;;;;;
 1977;Trinidad and Tobago;TTO;1977TTO;114.1736069;;;;65.987;;;;;
-1978;Latin America & Caribbean;LCN;1978LCN;112.5830765;;;;63.85426506;;;;;
 1978;Brazil;BRA;1978BRA;;;;;61.942;;;;;
 1978;Bolivia;BOL;1978BOL;99.20744324;;;;49.31;;;;;
 1978;Chile;CHL;1978CHL;118.6359787;;;;67.698;;;;;
@@ -323,7 +314,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1978;Puerto Rico;PRI;1978PRI;;;;;73.49873171;;;;;
 1978;Suriname;SUR;1978SUR;127.039711;;;;64.981;;;;;
 1978;Trinidad and Tobago;TTO;1978TTO;111.8317337;;;;66.182;;;;;
-1979;Latin America & Caribbean;LCN;1979LCN;116.0793381;;;;64.25188365;;;;;
 1979;Brazil;BRA;1979BRA;;;;;62.286;;;;;
 1979;Bolivia;BOL;1979BOL;100.7586212;;;;49.824;;;;;
 1979;Chile;CHL;1979CHL;118.572998;;;;68.378;;;;;
@@ -359,7 +349,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1979;Puerto Rico;PRI;1979PRI;;;;;73.60643902;;;;;
 1979;Suriname;SUR;1979SUR;132.1689911;;;;65.274;;;;;
 1979;Trinidad and Tobago;TTO;1979TTO;106.2794876;;;;66.364;;;;;
-1980;Latin America & Caribbean;LCN;1980LCN;116.6560135;;;;64.64378557;;;;;
 1980;Brazil;BRA;1980BRA;;;;;62.63;;;;;
 1980;Bolivia;BOL;1980BOL;99.96710205;;;;50.349;;;;;
 1980;Chile;CHL;1980CHL;115.5435715;;;;69.033;;;;;
@@ -395,7 +384,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1980;Puerto Rico;PRI;1980PRI;;;;;73.7002439;;;;;
 1980;Suriname;SUR;1980SUR;131.3276672;;;;65.575;;;;;
 1980;Trinidad and Tobago;TTO;1980TTO;102.5268478;;;;66.533;;;;;
-1981;Latin America & Caribbean;LCN;1981LCN;116.8148117;;46.7;13.5;65.02915423;;;;;
 1981;Brazil;BRA;1981BRA;;;60.3;21.4;62.976;;;;;
 1981;Bolivia;BOL;1981BOL;101.5398483;;;;50.883;;;;;
 1981;Chile;CHL;1981CHL;113.2436371;;;;69.655;;;;;
@@ -431,7 +419,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1981;Puerto Rico;PRI;1981PRI;;;;;73.79746341;;;;;
 1981;Suriname;SUR;1981SUR;126.4255905;;;;65.873;;;;;
 1981;Trinidad and Tobago;TTO;1981TTO;101.2842484;;;;66.694;;;;;
-1982;Latin America & Caribbean;LCN;1982LCN;117.4787292;;;;65.4097135;;;;;
 1982;Brazil;BRA;1982BRA;;;60;21.7;63.326;;;;;
 1982;Bolivia;BOL;1982BOL;;;;;51.427;;;;;
 1982;Chile;CHL;1982CHL;110.8084869;;;;70.239;;;;;
@@ -467,7 +454,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1982;Puerto Rico;PRI;1982PRI;96.24105835;;;;73.90858537;;;;;
 1982;Suriname;SUR;1982SUR;132.4332733;;;;66.154;;;;;
 1982;Trinidad and Tobago;TTO;1982TTO;100.1723709;;;;66.854;;;;;
-1983;Latin America & Caribbean;LCN;1983LCN;116.1653214;;;;65.78251111;;;;;
 1983;Brazil;BRA;1983BRA;;;66.6;27.7;63.68;;;;;
 1983;Bolivia;BOL;1983BOL;103.7264862;;;;51.98;;;;;
 1983;Chile;CHL;1983CHL;108.8064117;;;;70.782;;;;;
@@ -503,7 +489,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1983;Puerto Rico;PRI;1983PRI;;;;;74.03663415;;;;;
 1983;Suriname;SUR;1983SUR;135.9250641;;;;66.409;;;;;
 1983;Trinidad and Tobago;TTO;1983TTO;99.83013916;;;;67.015;;;;;
-1984;Latin America & Caribbean;LCN;1984LCN;117.4142685;;51.3;16.5;66.15152632;;;;;
 1984;Brazil;BRA;1984BRA;;;66.6;26.9;64.039;;;;;
 1984;Bolivia;BOL;1984BOL;109.3838882;;;;52.543;;;;;
 1984;Chile;CHL;1984CHL;104.9636307;;;;71.282;;;;;
@@ -539,7 +524,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1984;Puerto Rico;PRI;1984PRI;;;;;74.17763415;;;;;
 1984;Suriname;SUR;1984SUR;139.1317444;;;;66.631;;;;;
 1984;Trinidad and Tobago;TTO;1984TTO;96.68550873;;;;67.179;;;;;
-1985;Latin America & Caribbean;LCN;1985LCN;116.2245865;;;;66.51719656;;;;;
 1985;Brazil;BRA;1985BRA;;;61.5;23.1;64.406;;;;;
 1985;Bolivia;BOL;1985BOL;;;;;53.115;;;;;
 1985;Chile;CHL;1985CHL;104.7394409;;;;71.737;;;;;
@@ -575,7 +559,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1985;Puerto Rico;PRI;1985PRI;;;;;74.30919512;;;;;
 1985;Suriname;SUR;1985SUR;141.0406189;;;;66.819;;;;;
 1985;Trinidad and Tobago;TTO;1985TTO;96.56067657;;;;67.344;;;;;
-1986;Latin America & Caribbean;LCN;1986LCN;122.9514084;;;;66.88041253;;;;;
 1986;Brazil;BRA;1986BRA;;;42.4;10.5;64.782;;;;;
 1986;Bolivia;BOL;1986BOL;107.4294968;;;;53.695;;;;;
 1986;Chile;CHL;1986CHL;102.8753967;;;;72.148;;;;;
@@ -611,7 +594,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1986;Puerto Rico;PRI;1986PRI;;;;;74.40039024;;;;;
 1986;Suriname;SUR;1986SUR;143.6405334;;;;66.978;;;;;
 1986;Trinidad and Tobago;TTO;1986TTO;94.86576843;;;;67.507;;;;;
-1987;Latin America & Caribbean;LCN;1987LCN;114.178009;;47;13.5;67.24198618;;;;;
 1987;Brazil;BRA;1987BRA;;;52.9;17.8;65.165;;;;;
 1987;Bolivia;BOL;1987BOL;114.0451126;;;;54.284;;;;;
 1987;Chile;CHL;1987CHL;;;52.8;11.7;72.524;;;;;
@@ -647,7 +629,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1987;Puerto Rico;PRI;1987PRI;;;;;74.43097561;;;;0.118023378;
 1987;Suriname;SUR;1987SUR;131.6317139;;;;67.113;;;;;
 1987;Trinidad and Tobago;TTO;1987TTO;97.63954163;;;;67.666;;;;;
-1988;Latin America & Caribbean;LCN;1988LCN;115.1633987;;;;67.59979069;;;;;
 1988;Brazil;BRA;1988BRA;;;55;20.1;65.553;;;;;
 1988;Bolivia;BOL;1988BOL;;;;;54.881;;;;;
 1988;Chile;CHL;1988CHL;100.1350021;;;;72.872;;;;;
@@ -683,7 +664,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1988;Puerto Rico;PRI;1988PRI;;;;;74.39409756;;;;0.260044907;
 1988;Suriname;SUR;1988SUR;130.8516693;;;;67.233;;;;;
 1988;Trinidad and Tobago;TTO;1988TTO;98.3755188;;22.3;0.7;67.816;;;;;
-1989;Latin America & Caribbean;LCN;1989LCN;113.1936874;;;;67.95668493;;;;;
 1989;Brazil;BRA;1989BRA;;;52.2;18.3;65.947;;;;;
 1989;Bolivia;BOL;1989BOL;103.2028198;;;;55.486;;;;;
 1989;Chile;CHL;1989CHL;101.1376266;;;;73.198;;;;0.037415503;
@@ -719,7 +699,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1989;Puerto Rico;PRI;1989PRI;;;;;74.29895122;;;;0.343868965;
 1989;Suriname;SUR;1989SUR;135.2421265;;;;67.341;;;;;
 1989;Trinidad and Tobago;TTO;1989TTO;97.04773712;;;;67.957;;;;;
-1990;Latin America & Caribbean;LCN;1990LCN;115.6446915;;49.3;14.8;68.31079757;;;;;
 1990;Brazil;BRA;1990BRA;;;57.8;21.6;66.343;;;;0.000447641;
 1990;Bolivia;BOL;1990BOL;105.7126465;;49.7;7.1;56.099;;;;;
 1990;Chile;CHL;1990CHL;102.6298904;;46.1;8.1;73.509;;;0.2421;0.104869268;
@@ -755,7 +734,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1990;Puerto Rico;PRI;1990PRI;;;;;74.16917073;;;;0.598533008;
 1990;Suriname;SUR;1990SUR;121.3626785;;;;67.436;;;;;
 1990;Trinidad and Tobago;TTO;1990TTO;95.64939117;;;;68.086;;;;;
-1991;Latin America & Caribbean;LCN;1991LCN;112.9133911;;;;68.66278355;;;;;
 1991;Brazil;BRA;1991BRA;;;;;66.742;;;;0.004418126;
 1991;Bolivia;BOL;1991BOL;107.4468613;;;;56.721;;;;0.004207402;
 1991;Chile;CHL;1991CHL;103.04319;;;;73.808;;;0.2316;0.26776813;
@@ -791,7 +769,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1991;Puerto Rico;PRI;1991PRI;;;;;74.03880488;;;;0.972563011;
 1991;Suriname;SUR;1991SUR;113.1714783;;;;67.519;;;;;
 1991;Trinidad and Tobago;TTO;1991TTO;95.27204895;;;;68.201;;;;0.034659422;
-1992;Latin America & Caribbean;LCN;1992LCN;113.6464462;;;;69.01183959;;;;;
 1992;Brazil;BRA;1992BRA;;;58.2;20.9;67.141;;;;0.020744281;
 1992;Bolivia;BOL;1992BOL;107.5949402;;;;57.351;;;;0.021659228;
 1992;Chile;CHL;1992CHL;100.4115982;;39.8;4.7;74.1;;;0.2261;0.469670919;
@@ -827,7 +804,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1992;Puerto Rico;PRI;1992PRI;;;;;73.94636585;;;;1.72957117;
 1992;Suriname;SUR;1992SUR;132.539505;;;;67.59;;;;;
 1992;Trinidad and Tobago;TTO;1992TTO;94.7379303;;32.9;3.4;68.305;;;;0.103260092;
-1993;Latin America & Caribbean;LCN;1993LCN;114.0892181;;49.1;14;69.35639244;;;;;
 1993;Brazil;BRA;1993BRA;;;56.8;19.9;67.539;;;;0.11603511;
 1993;Bolivia;BOL;1993BOL;108.48703;;;;57.989;;;;0.036360653;
 1993;Chile;CHL;1993CHL;100.6024704;;;;74.386;;;0.2282;0.61087404;
@@ -863,7 +839,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1993;Puerto Rico;PRI;1993PRI;;;;;73.92087805;;;;2.711595811;
 1993;Suriname;SUR;1993SUR;138.2621613;;;;67.647;;;;0.251851506;
 1993;Trinidad and Tobago;TTO;1993TTO;94.88790894;;;;68.402;;;;0.135009521;
-1994;Latin America & Caribbean;LCN;1994LCN;114.7134094;;;;69.69746007;;;;;
 1994;Brazil;BRA;1994BRA;;;;;67.932;22.770846;;;0.360032128;
 1994;Bolivia;BOL;1994BOL;110.4940796;;;;58.631;;;;0.054320509;
 1994;Chile;CHL;1994CHL;;;36.9;5;74.671;;;0.2218;0.816661184;
@@ -899,7 +874,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1994;Puerto Rico;PRI;1994PRI;;;;;73.97690244;;;;4.947982566;
 1994;Suriname;SUR;1994SUR;149.7418671;;;;67.695;;;;0.317624481;
 1994;Trinidad and Tobago;TTO;1994TTO;95.22258759;;;;68.496;;;;0.207999872;
-1995;Latin America & Caribbean;LCN;1995LCN;121.3451233;;;;70.03514058;;;;;
 1995;Brazil;BRA;1995BRA;;;45;13;68.318;12.680104;;;0.793441443;
 1995;Bolivia;BOL;1995BOL;112.9630127;;;;59.276;;;;0.094839667;
 1995;Chile;CHL;1995CHL;;;;;74.957;;;0.2203;1.372059235;
@@ -935,7 +909,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1995;Puerto Rico;PRI;1995PRI;;;;;74.12456098;;;;8.044407371;
 1995;Suriname;SUR;1995SUR;;;;;67.731;;;;0.381802915;
 1995;Trinidad and Tobago;TTO;1995TTO;96.32514954;;;;68.597;;;;0.506538032;
-1996;Latin America & Caribbean;LCN;1996LCN;121.6082077;;48.1;13.7;70.37123043;;;;;
 1996;Brazil;BRA;1996BRA;;;45.7;14.2;68.695;12.004042;;;1.517576609;
 1996;Bolivia;BOL;1996BOL;114.1148529;;;;59.922;;;;0.429346364;
 1996;Chile;CHL;1996CHL;100.3041077;;31.2;3.4;75.244;;;0.2174;2.190072645;
@@ -971,7 +944,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1996;Puerto Rico;PRI;1996PRI;;;;;74.36146341;;;;9.148830618;
 1996;Suriname;SUR;1996SUR;;;;;67.753;;;;0.539029435;
 1996;Trinidad and Tobago;TTO;1996TTO;97.2620163;;;;68.713;;;;0.758141432;
-1997;Latin America & Caribbean;LCN;1997LCN;115.3904037;;;;70.70576055;;;;;
 1997;Brazil;BRA;1997BRA;;;45.7;14;69.061;12.837495;;;2.721144742;
 1997;Bolivia;BOL;1997BOL;115.3264008;;52.6;19.3;60.566;;;;1.492077186;
 1997;Chile;CHL;1997CHL;78.36396027;;;;75.53;;;0.2317;2.771093626;
@@ -1007,7 +979,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1997;Puerto Rico;PRI;1997PRI;;;;;74.66404878;;;;10.13280602;
 1997;Suriname;SUR;1997SUR;;;;;67.762;;;;0.497180515;
 1997;Trinidad and Tobago;TTO;1997TTO;98.81765747;;;;68.85;;;;1.360481582;
-1998;Latin America & Caribbean;LCN;1998LCN;122.6464767;;;;71.03605376;;;;;
 1998;Brazil;BRA;1998BRA;;;44.6;12.7;69.419;12.91055;;;4.33972798;
 1998;Bolivia;BOL;1998BOL;116.3243103;;;;61.204;;;;2.955157007;
 1998;Chile;CHL;1998CHL;103.0090332;;29.1;3.5;75.813;;;0.2167;6.437876814;
@@ -1043,7 +1014,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1998;Puerto Rico;PRI;1998PRI;;;;;75.00729268;;;;15.91797741;
 1998;Suriname;SUR;1998SUR;;;;;67.768;;;;1.306349507;
 1998;Trinidad and Tobago;TTO;1998TTO;100.4452133;;;;69.011;;;;2.085052251;
-1999;Latin America & Caribbean;LCN;1999LCN;122.18293;;47;13.5;71.36205821;;;;;
 1999;Brazil;BRA;1999BRA;165.6453857;;45.9;13.4;69.769;12.500839;;;8.723777617;
 1999;Bolivia;BOL;1999BOL;118.3021774;;54.8;25.3;61.835;;;;5.090718664;
 1999;Chile;CHL;1999CHL;103.7698669;;;;76.092;;;0.21250001;14.90942966;
@@ -1079,7 +1049,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 1999;Puerto Rico;PRI;1999PRI;;;;;75.3754878;;;;22.23665562;
 1999;Suriname;SUR;1999SUR;104.7216415;;55.7;23.4;67.781;;;;3.760327471;
 1999;Trinidad and Tobago;TTO;1999TTO;102.5609894;;;;69.199;;;;3.058627316;
-2000;Latin America & Caribbean;LCN;2000LCN;118.6873703;;;;71.68694545;;;;;
 2000;Brazil;BRA;2000BRA;;;;;70.116;14.231839;;;13.26627719;
 2000;Bolivia;BOL;2000BOL;118.22122;;62.1;28.6;62.452;;;;6.920904357;
 2000;Chile;CHL;2000CHL;103.01351;36;31;4.4;76.366;;;0.20200001;22.17081695;
@@ -1115,7 +1084,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2000;Puerto Rico;PRI;2000PRI;;;;;76.68926829;;;;35.92568466;
 2000;Suriname;SUR;2000SUR;;;;;67.822;;;;8.716018083;
 2000;Trinidad and Tobago;TTO;2000TTO;104.91024;;;;69.413;;;;12.77351669;
-2001;Latin America & Caribbean;LCN;2001LCN;119.4985962;;;;71.99277274;;;;;
 2001;Brazil;BRA;2001BRA;150.78555;;41.3;11.6;70.462;11.377592;0.54290003;0.26210001;16.22257852;
 2001;Bolivia;BOL;2001BOL;117.24152;;57.4;22.8;63.054;;;;9.089692765;
 2001;Chile;CHL;2001CHL;;;;;76.634;;;0.20479999;32.8741032;
@@ -1151,7 +1119,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2001;Puerto Rico;PRI;2001PRI;;;;;77.06682927;;;;44.3604821;
 2001;Suriname;SUR;2001SUR;106.07478;;;;67.913;;;;18.25510566;
 2001;Trinidad and Tobago;TTO;2001TTO;101.12275;;;;69.65;;;;20.13994615;
-2002;Latin America & Caribbean;LCN;2002LCN;119.1834869;;45;11.8;72.2872562;;;;;
 2002;Brazil;BRA;2002BRA;146.82779;;40.4;10.3;70.813;10.86598;0.55669999;0.27419999;19.42823093;
 2002;Bolivia;BOL;2002BOL;117.82004;63.3;59.6;24.7;63.64;;;;11.70484697;
 2002;Chile;CHL;2002CHL;100.84305;;;;76.894;22.733539;;0.20200001;39.81221097;
@@ -1187,7 +1154,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2002;Puerto Rico;PRI;2002PRI;;;;;77.7604878;;;;44.94499401;
 2002;Suriname;SUR;2002SUR;104.12106;;;;68.064;;;;22.47099443;
 2002;Trinidad and Tobago;TTO;2002TTO;96.51612;;;;69.903;;;;20.57385886;
-2003;Latin America & Caribbean;LCN;2003LCN;117.5644836;;;;72.56173858;;;;;
 2003;Brazil;BRA;2003BRA;140.54449;;41.7;11.1;71.17;10.373651;0.5528;0.27200001;25.50654987;
 2003;Bolivia;BOL;2003BOL;116.04538;;;;64.21;;;;14.35963863;
 2003;Chile;CHL;2003CHL;99.72118;35.4;30.3;4.2;77.146;23.720042;;0.18529999;45.8576693;
@@ -1223,7 +1189,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2003;Puerto Rico;PRI;2003PRI;;;;;78.07121951;;;;46.77673718;
 2003;Suriname;SUR;2003SUR;;;;;68.28;;;;34.53730156;
 2003;Trinidad and Tobago;TTO;2003TTO;100.52961;;;;70.164;;;;26.20463882;
-2004;Latin America & Caribbean;LCN;2004LCN;116.3082886;;;;72.81852222;;;;;
 2004;Brazil;BRA;2004BRA;133.69631;;40.3;9.7;71.531;11.908494;0.5478;0.27320001;35.65363548;
 2004;Bolivia;BOL;2004BOL;115.41665;63.1;53.1;13.7;64.766;;;;19.85644786;
 2004;Chile;CHL;2004CHL;104.155;;;;77.391;25.102878;0.53960001;0.2244;57.82954587;
@@ -1259,7 +1224,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2004;Puerto Rico;PRI;2004PRI;;;;;78.17585366;;;;50.73926292;
 2004;Suriname;SUR;2004SUR;;;;;68.555;;;;43.10878121;
 2004;Trinidad and Tobago;TTO;2004TTO;101.71258;;;;70.428;;;;50.47495471;
-2005;Latin America & Caribbean;LCN;2005LCN;116.0519485;;40.9;9.9;73.0596627;;;;;
 2005;Brazil;BRA;2005BRA;133.26216;;38.1;8.6;71.896;13.842465;0.551;0.27900001;46.31799164;
 2005;Bolivia;BOL;2005BOL;114.81316;59.6;52.1;19.3;65.312;;;;26.22748856;
 2005;Chile;CHL;2005CHL;104.56108;;;;77.63;26.170622;0.52310002;0.2154;65.31393577;
@@ -1295,7 +1259,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2005;Puerto Rico;PRI;2005PRI;;;;;78.29609756;;;;54.88782834;
 2005;Suriname;SUR;2005SUR;105.0331;;;;68.877;;;;46.60696266;
 2005;Trinidad and Tobago;TTO;2005TTO;99.25541;;;;70.691;;;;71.27640374;
-2006;Latin America & Caribbean;LCN;2006LCN;115.5569382;;;;73.28645448;;;;;
 2006;Brazil;BRA;2006BRA;;;34.2;7.2;72.26;15.217033;0.55470002;0.2823;53.10093266;
 2006;Bolivia;BOL;2006BOL;113.27957;59.9;48.1;16.4;65.853;;;;30.61209654;
 2006;Chile;CHL;2006CHL;105.41235;29.1;23.3;2.4;77.865;26.210826;0.52609998;0.22660001;76.13071604;
@@ -1331,7 +1294,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2006;Puerto Rico;PRI;2006PRI;;;;;78.41634146;;;;60.67821446;
 2006;Suriname;SUR;2006SUR;105.81222;;;;69.227;;;;63.32934227;
 2006;Trinidad and Tobago;TTO;2006TTO;;;;;70.952;;;;116.6010651;
-2007;Latin America & Caribbean;LCN;2007LCN;115.5037384;;;;73.50058619;;;;;
 2007;Brazil;BRA;2007BRA;128.17979;;32.1;6.8;72.618;17.466634;0.54939997;0.28290001;63.63005371;
 2007;Bolivia;BOL;2007BOL;112.38876;60.1;46.4;12.4;66.395;;;;34.04750504;
 2007;Chile;CHL;2007CHL;106.78148;;;;78.099;28.852726;0.55699998;0.2472;84.42248866;
@@ -1367,7 +1329,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2007;Puerto Rico;PRI;2007PRI;;;;;78.42585366;;;;67.23681955;
 2007;Suriname;SUR;2007SUR;104.21041;;;;69.579;;;;74.33766122;
 2007;Trinidad and Tobago;TTO;2007TTO;104.63894;;;;71.21;;;;115.3883485;
-2008;Latin America & Caribbean;LCN;2008LCN;115.9135437;;33.2;6.9;73.70281671;;;;;
 2008;Brazil;BRA;2008BRA;132.05521;;28.9;5.6;72.966;19.549044;0.56199998;0.2929;78.44665887;
 2008;Bolivia;BOL;2008BOL;111.0085;57.3;39.2;11.1;66.937;;;;51.82969543;
 2008;Chile;CHL;2008CHL;107.54435;;;;78.33;32.651301;0.53549999;0.2138;88.55856188;
@@ -1403,7 +1364,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2008;Puerto Rico;PRI;2008PRI;;;;;77.96292683;;;;70.49790578;
 2008;Suriname;SUR;2008SUR;111.69702;;;;69.91;;;;127.0695753;
 2008;Trinidad and Tobago;TTO;2008TTO;106.38056;;;;71.464;;;;137.40573;
-2009;Latin America & Caribbean;LCN;2009LCN;116.0459595;;;;73.90270319;;;;;
 2009;Brazil;BRA;2009BRA;131.16516;;27.4;5.4;73.3;21.532159;0.54970002;0.2744;87.36326511;
 2009;Bolivia;BOL;2009BOL;107.1726;51.3;35.1;10.5;67.476;;;;65.39740233;
 2009;Chile;CHL;2009CHL;106.50496;25.3;20.5;2.6;78.558;33.753971;0.551;0.241;97.41822695;
@@ -1439,7 +1399,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2009;Puerto Rico;PRI;2009PRI;96.70389;;;;78.191;;;;75.41192368;
 2009;Suriname;SUR;2009SUR;114.15126;;;;70.209;;;;146.0324864;
 2009;Trinidad and Tobago;TTO;2009TTO;106.59447;;;;71.71;;;;139.7761426;
-2010;Latin America & Caribbean;LCN;2010LCN;114.8882;;31.1;6.2;74.0956072;;;;;
 2010;Brazil;BRA;2010BRA;;;;;73.619;22.692814;0.5521;0.28189999;100.6214912;28.25045889
 2010;Bolivia;BOL;2010BOL;103.4391;;;;68.007;;;;71.44577498;5.771954075
 2010;Chile;CHL;2010CHL;103.7505;;;;78.779;32.440477;0.55549997;0.2579;116.3498908;46.30026861
@@ -1475,7 +1434,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2010;Puerto Rico;PRI;2010PRI;97.41122;;;;78.41909756;;;;81.95861213;95.1222953
 2010;Suriname;SUR;2010SUR;114.0404;;;;70.465;;;;98.49470169;11.33934697
 2010;Trinidad and Tobago;TTO;2010TTO;106.2101;;;;71.946;;;;142.6227669;44.42279356
-2011;Latin America & Caribbean;LCN;2011LCN;115.7271;;29.6;5.7;74.28141034;;;;;
 2011;Brazil;BRA;2011BRA;132.4966;;24;4.7;73.921;23.777815;0.56529999;0.29609999;118.653296;44.09295774
 2011;Bolivia;BOL;2011BOL;99.9041;45.1;28.3;7.3;68.521;;;;81.79095882;8.126933696
 2011;Chile;CHL;2011CHL;103.4072;22.2;16.4;1.6;78.986;33.784802;0.53680003;0.2362;129.4870432;64.40915107
@@ -1511,7 +1469,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2011;Puerto Rico;PRI;2011PRI;89.72271;;;;78.64065854;;;;87.31722952;134.8290661
 2011;Suriname;SUR;2011SUR;112.2363;;;;70.676;;;;99.69038396;18.68533706
 2011;Trinidad and Tobago;TTO;2011TTO;;;;;72.17;;;;136.6734073;61.36906909
-2012;Latin America & Caribbean;LCN;2012LCN;115.3976;;27.7;4.7;74.45968593;;;;;
 2012;Brazil;BRA;2012BRA;134.5204;;20.8;3.8;74.209;25.164535;0.55419999;0.2773;124.6058852;70.54639348
 2012;Bolivia;BOL;2012BOL;98.31224;43.3;28.3;8.2;69.01;;;;91.47719586;10.503315
 2012;Chile;CHL;2012CHL;103.2481;;;;79.176;35.457577;0.53329998;0.2255;137.589055;102.9289818
@@ -1547,7 +1504,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2012;Puerto Rico;PRI;2012PRI;91.09881;;;;78.84758537;;;;86.23313763;167.5614282
 2012;Suriname;SUR;2012SUR;112.7073;;;;70.851;;;;105.1407403;27.71388188
 2012;Trinidad and Tobago;TTO;2012TTO;;;;;72.382;;;;140.0696302;105.5905748
-2013;Latin America & Caribbean;LCN;2013LCN;110.7521;;27.2;4.6;74.63098772;;;;;
 2013;Brazil;BRA;2013BRA;113.9198;;19.5;3.8;74.483;26.227775;0.54890001;0.27649999;134.8514284;86.83026136
 2013;Bolivia;BOL;2013BOL;97.05637;38.9;26;6.9;69.468;;;;98.89329513;14.22829161
 2013;Chile;CHL;2013CHL;101.4587;14.4;10.1;0.9;79.349;37.240682;0.53049999;0.2181;134.6574258;127.4221955
@@ -1583,7 +1539,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2013;Puerto Rico;PRI;2013PRI;90.86944;;;;79.03434146;;;;88.04997234;185.0781378
 2013;Suriname;SUR;2013SUR;112.8361;;;;71.002;;;;158.7089866;34.71644884
 2013;Trinidad and Tobago;TTO;2013TTO;;;;;72.582;;;;143.5967121;133.7076162
-2014;Latin America & Caribbean;LCN;2014LCN;109.9361;;;;74.79706447;;;;;
 2014;Brazil;BRA;2014BRA;114.2547;;17.9;2.8;74.745;27.748839;0.54610002;0.27520001;138.4511833;112.3376426
 2014;Bolivia;BOL;2014BOL;95.93012;39.1;24.9;5.8;69.891;;;;97.60728909;18.4934092
 2014;Chile;CHL;2014CHL;100.9415;;;;79.504;39.288458;0.54119998;0.2255;133.3451921;165.156077
@@ -1619,7 +1574,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2014;Puerto Rico;PRI;2014PRI;90.45335;;;;79.20246341;;;;92.91050221;206.5137258
 2014;Suriname;SUR;2014SUR;113.3312;;;;71.133;;;;167.6929834;66.87476165
 2014;Trinidad and Tobago;TTO;2014TTO;;;;;72.768;;;;145.3791808;173.2310976
-2015;Latin America & Caribbean;LCN;2015LCN;108.9889;;26.3;3.9;74.95969785;;;;;
 2015;Brazil;BRA;2015BRA;112.7733;;19.4;3.4;74.994;28.436629;0.55559999;0.28349999;126.0879559;158.9608197
 2015;Bolivia;BOL;2015BOL;95.85796;38.6;25.6;6.4;70.277;;;;93.49660939;26.67959554
 2015;Chile;CHL;2015CHL;100.6848;11.7;10.1;1.3;79.646;41.089191;0.54890001;0.2366;129.1440655;223.9924832
@@ -1655,7 +1609,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2015;Puerto Rico;PRI;2015PRI;89.06151;;;;79.3534878;;;;94.77971136;318.4414451
 2015;Suriname;SUR;2015SUR;115.8036;;;;71.249;;;;134.2157552;107.3070753
 2015;Trinidad and Tobago;TTO;2015TTO;;;;;72.941;;;;154.9537045;269.2785961
-2016;Latin America & Caribbean;LCN;2016LCN;108.8391;;;;75.11995716;;;;;
 2016;Brazil;BRA;2016BRA;113.9454;;20.7;4.3;75.23;28.382689;;;118.3855945;410.044364
 2016;Bolivia;BOL;2016BOL;96.5925;39.5;25;7.1;70.626;;;;91.60973889;37.89041747
 2016;Chile;CHL;2016CHL;100.9783;;;;79.779;42.329993;;;127.972519;1237.18578
@@ -1691,7 +1644,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2016;Puerto Rico;PRI;2016PRI;83.03671;;;;79.49497561;;;;99.05733105;419.78632
 2016;Suriname;SUR;2016SUR;115.547;;;;71.358;;;;142.8391115;139.8507315
 2016;Trinidad and Tobago;TTO;2016TTO;;;;;73.1;;;;157.223424;299.0786635
-2017;Latin America & Caribbean;LCN;2017LCN;108.9367;;;;75.28021575;;;;;
 2017;Brazil;BRA;2017BRA;115.4478;;21;4.8;75.456;27.268663;;;105.014207;1581.638554
 2017;Bolivia;BOL;2017BOL;97.55629;36.4;24.7;5.8;70.945;;;;97.94841441;109.5341724
 2017;Chile;CHL;2017CHL;101.4302;8.6;6.4;0.7;79.909;43.643397;;;124.5944777;7258.192401
@@ -1727,7 +1679,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2017;Puerto Rico;PRI;2017PRI;;;;;79.63453659;;;;107.1352326;283.0074337
 2017;Suriname;SUR;2017SUR;110.5575;;;;71.463;;;;139.5050973;201.5789769
 2017;Trinidad and Tobago;TTO;2017TTO;;;;;73.245;;;;146.7160721;290.4473178
-2018;Latin America & Caribbean;LCN;2018LCN;109.2604;;;;;;;;;
 2018;Brazil;BRA;2018BRA;;;;;;28.240104;;;98.84349987;2036.384009
 2018;Bolivia;BOL;2018BOL;;34.6;;;;;;;100.8164084;130.1842257
 2018;Chile;CHL;2018CHL;;;;;;45.410184;;;134.4373213;8073.293196
@@ -1763,7 +1714,6 @@ Time;Country Name;Country Code;cod_pais_ano;School enrollment, primary (% gross)
 2018;Puerto Rico;PRI;2018PRI;;;;;;;;;109.563442;384.6451172
 2018;Suriname;SUR;2018SUR;108.8421;;;;;;;;130.604698;291.671224
 2018;Trinidad and Tobago;TTO;2018TTO;;;;;;;;;141.9293402;281.3237036
-2019;Latin America & Caribbean;LCN;2019LCN;;;;;;;;;;
 2019;Brazil;BRA;2019BRA;;;;;;;;;;
 2019;Bolivia;BOL;2019BOL;;;;;;;;;;
 2019;Chile;CHL;2019CHL;;;;;;;;;;
