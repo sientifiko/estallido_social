@@ -7,7 +7,7 @@ dataset <- read.delim("dataset.csv", sep = ";")
 # cambiando nombre a variables
 colnames(dataset) <- c("year", "ctry", "ctry_code", "code_ano", "sch_enroll", 
                        "poverty_natlines", "poverty_5.50", "poverty_1.90", "lifexpect",
-                       "housholddebt", "p90", "p99", "mobile_per_100", "inet_per_million")
+                       "housholddebt", "p90", "p99", "mobile_per_100", "inet_per_million", "idh")
 
 #chequeamos que línea de la pobreza tiene más casos
 length(na.omit(dataset$poverty_natlines))
@@ -62,6 +62,31 @@ desa_humano <- ggplot(data2, aes(poverty_1.90, sch_enroll,
   transition_time(year)
 
 animate(desa_humano,  duration = 30, width = 900)
-
 # se pueden alterar dimensiones de gráfica con width = x, height = y
+
+# plotear el IDH
+idh <- dataset[, c(1, 2,15)]
+idh <- na.omit(idh)
+
+# manipular el dataset
+idh2 <- idh %>% filter(year == 1970 | year == 2015)
+
+#
+ggplot(idh2, aes(idh, reorder(ctry, -idh))) +
+  theme_bw() +
+  theme(text = element_text(size = 20), legend.position = "top",
+        axis.text.y = element_text(size = 10)) +
+  geom_line(aes(group = ctry, color = ifelse(ctry == "Chile", "red", "black"))) +
+  geom_point(aes(color = as.factor(year)), size = 3) +
+  # geom_text(aes(label = as.factor(year), color = as.factor(year)), size = 3) +
+  scale_x_continuous(limits = c(0,1)) +
+  scale_color_discrete(breaks = c(1970, 2015)) +
+  labs(x = "Índice de Desarrollo Humano",
+       y = "", color = "")
+
+
+
+
+
+
 
