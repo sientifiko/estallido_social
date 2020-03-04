@@ -7,7 +7,8 @@ dataset <- read.delim("dataset.csv", sep = ";")
 # cambiando nombre a variables
 colnames(dataset) <- c("year", "ctry", "ctry_code", "code_ano", "sch_enroll", 
                        "poverty_natlines", "poverty_5.50", "poverty_1.90", "lifexpect",
-                       "housholddebt", "p90", "p99", "mobile_per_100", "inet_per_million", "idh")
+                       "housholddebt", "p90", "p99", "mobile_per_100", "inet_per_million", "idh",
+                       "egaldem")
 
 #chequeamos que línea de la pobreza tiene más casos
 length(na.omit(dataset$poverty_natlines))
@@ -63,15 +64,16 @@ desa_humano <- ggplot(data2, aes(poverty_1.90, sch_enroll,
 
 animate(desa_humano,  duration = 30, width = 900)
 # se pueden alterar dimensiones de gráfica con width = x, height = y
+rm(desa_humano)
 
 # plotear el IDH
-idh <- dataset[, c(1, 2,15)]
+idh <- dataset[, c(1,2,15)]
 idh <- na.omit(idh)
 
 # manipular el dataset
 idh2 <- idh %>% filter(year == 1970 | year == 2015)
 
-#
+# plot de la IDH en américa latina
 ggplot(idh2, aes(idh, reorder(ctry, -idh))) +
   theme_bw() +
   theme(text = element_text(size = 20), legend.position = "top",
@@ -85,8 +87,46 @@ ggplot(idh2, aes(idh, reorder(ctry, -idh))) +
        y = "", color = "")
 
 
+# recortar dataset 
+data3 <- dataset[,c(1,3,15,16)]
 
+# imputar 
+paises <- unique(data3$ctry_code)
+for(i in paises){
+  # la función na_interpolate requiere como mínimo 2 valores no nulos
+  # imputamos pobreza
+  if(sum(!is.na(data3$idh[data3$ctry_code==i]))>2){
+    data3$idh[data3$ctry_code==i] <- data3$idh[data3$ctry_code==i] %>% 
+      na_interpolation()
+  } else {
+    data3 <- data3[!data3$ctry_code==i,]
+  }
+  # imputamos matrícula escolar
+  if(sum(!is.na(data3$egaldem[data3$ctry_code==i]))>2){
+    data3$egaldem[data3$ctry_code==i] <- data3$egaldem[data3$ctry_code==i] %>% 
+      na_interpolation()
+  } else {
+    data3 <- data3[!data3$ctry_code==i,]
+  }
+}
+rm(i, paises)
 
-
+# generar plot de relación IDH vs democracia igualitaria
+idh_egaldem <- ggplot(data3, aes(idh, egaldem, 
+                  colour = ifelse(ctry_code=="CHL", "red", "black"))) +
+  theme_bw() +
+  theme(legend.position = "none",
+        text = element_text(size = 25),
+        plot.title = element_text(hjust = .5, size = 40, face = "bold")) +
+  geom_text(aes(label = ctry_code, fontface = 2, size = 20) ) +
+  scale_x_continuous(limits = c(0,1)) +
+  scale_y_continuous(limits = c(0,1)) +
+  labs(title = "Año: {frame_time}",
+       x = "IDH",
+     y = "Índice democracia igualitaria") +
+  transition_time(year)
+  
+# crear gif
+animate(idh_egaldem,  duration = 30, width = 900)
 
 
