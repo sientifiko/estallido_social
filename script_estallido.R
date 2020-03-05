@@ -139,15 +139,15 @@ data4$egaldem <- data4$egaldem %>% na_interpolation()
 data4$protest_google_search <- data4$protest_google_search %>% na_interpolation()
 
 # plot
-ggplot(data4, aes(idh, egaldem, size = protest_google_search)) +
+ggplot(data4, aes(idh, egaldem, alpha = protest_google_search)) +
   theme_bw()+
   geom_smooth(show.legend = F, color = "red") +
-  geom_text(aes(label = year, fontface = 2), angle = 90, 
-            position=position_jitter(width=.005,height=.005)) +
+  geom_text(aes(label = year, fontface = 2), angle = 90, size = 10,
+          position=position_jitter(width=.007,height=.007)) +
   theme(legend.position = "top", text = element_text(size = 20)) +
   scale_y_continuous(limits = c(0,1)) +
   labs(x = "IDH", y = "Índice de Democracia igualitaria", 
-       size = 'Búsquedas de "Protesta" \nen Google, Chile')
+       alpha = 'Búsquedas de "Protesta" \nen Google, Chile')
 
 
 
