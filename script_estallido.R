@@ -8,7 +8,7 @@ dataset <- read.delim("dataset.csv", sep = ";")
 colnames(dataset) <- c("year", "ctry", "ctry_code", "code_ano", "sch_enroll", 
                        "poverty_natlines", "poverty_5.50", "poverty_1.90", "lifexpect",
                        "housholddebt", "p90", "p99", "mobile_per_100", "inet_per_million", "idh",
-                       "egaldem")
+                       "egaldem", "protest_google_search")
 
 #chequeamos que línea de la pobreza tiene más casos
 length(na.omit(dataset$poverty_natlines))
@@ -128,5 +128,27 @@ idh_egaldem <- ggplot(data3, aes(idh, egaldem,
   
 # crear gif
 animate(idh_egaldem,  duration = 30, width = 900)
+
+# jugando con datos de google trends
+data4 <- dataset %>% filter(ctry_code == "CHL" & year >= 2000) %>% 
+  select(1, 15:17)
+
+# imputando
+data4$idh <- data4$idh %>% na_interpolation()
+data4$egaldem <- data4$egaldem %>% na_interpolation()
+data4$protest_google_search <- data4$protest_google_search %>% na_interpolation()
+
+# plot
+ggplot(data4, aes(idh, egaldem, size = protest_google_search)) +
+  theme_bw()+
+  geom_smooth(show.legend = F, color = "red") +
+  geom_text(aes(label = year, fontface = 2), angle = 90, 
+            position=position_jitter(width=.005,height=.005)) +
+  theme(legend.position = "top", text = element_text(size = 20)) +
+  scale_y_continuous(limits = c(0,1)) +
+  labs(x = "IDH", y = "Índice de Democracia igualitaria", 
+       size = 'Búsquedas de "Protesta" \nen Google, Chile')
+
+
 
 
