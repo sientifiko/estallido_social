@@ -152,5 +152,27 @@ ggplot(data4, aes(idh, egaldem, alpha = protest_google_search)) +
        alpha = 'Búsquedas de "Protesta" \nen Google, Chile')
 
 
+# ================ BONUS =========================
+# En esta sección visualizamos que tal anda la liberería "imputeTS"
+
+CL <- data2 %>% filter(ctry_code == "CHL")
+AR <- data2 %>% filter(ctry_code == "ARG")
+
+CL$pov.imputed <- CL$poverty_1.90 %>% na.interpolation()
+AR$pov.imputed <- AR$poverty_1.90 %>% na.interpolation()
+
+dat <- rbind(CL, AR)
+
+ggplot(dat, aes(year)) +
+  geom_point(aes(y = pov.imputed, colour = "Imputado")) +
+  geom_point(aes(y = poverty_1.90, colour = "Observado")) +
+  facet_wrap(.~ctry_code) +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90), legend.position = "top") +
+  labs(x = "", y = "% personas que vive con menos de 1.90 usd al día", colour = "")
+
+# como pueden observar, funciona bastante bien, pero es importante que casos tengan
+# valores no nulos en el t0 del intervalo de comparación
+
 
 
