@@ -1,5 +1,6 @@
 # setear librerías de trabajo
-library(tidyverse); library(gganimate); library(transformr); library(imputeTS)
+library(tidyverse); library(gganimate); library(transformr); 
+library(imputeTS); library(gifski)
 
 # importando dataset
 dataset <- read.delim("dataset.csv", sep = ";")
@@ -14,7 +15,7 @@ colnames(dataset) <- c("year", "ctry", "ctry_code", "code_ano", "sch_enroll",
 length(na.omit(dataset$poverty_natlines))
 length(na.omit(dataset$poverty_5.50)) 
 length(na.omit(dataset$poverty_1.90))
-# las últimas dos tienen la misma, asi que usaremos el umbra más bajo
+# las últimas dos tienen la misma, asi que usaremos el umbral más bajo
 
 # usar un dataset más pequeño para ploteo
 data2 <- dataset[dataset$year >= 1980, c(1,3,5,8,9)]
@@ -60,7 +61,8 @@ desa_humano <- ggplot(data2, aes(poverty_1.90, sch_enroll,
        x = "% personas viviendo con menos de 1.90 USD al día",
        y = "% bruto matrícula educación primaria",
        size = "Esperanza \nde vida") +
-  transition_time(year)
+  transition_time(year) 
+
 
 animate(desa_humano,  duration = 30, width = 900)
 # se pueden alterar dimensiones de gráfica con width = x, height = y
