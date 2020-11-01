@@ -1,178 +1,312 @@
 # setear librerías de trabajo
 library(tidyverse); library(gganimate); library(transformr); 
-library(imputeTS); library(gifski)
-
-# importando dataset
-dataset <- read.delim("dataset.csv", sep = ";")
-
-# cambiando nombre a variables
-colnames(dataset) <- c("year", "ctry", "ctry_code", "code_ano", "sch_enroll", 
-                       "poverty_natlines", "poverty_5.50", "poverty_1.90", "lifexpect",
-                       "housholddebt", "p90", "p99", "mobile_per_100", "inet_per_million", "idh",
-                       "egaldem", "protest_google_search")
-
-#chequeamos que línea de la pobreza tiene más casos
-length(na.omit(dataset$poverty_natlines))
-length(na.omit(dataset$poverty_5.50)) 
-length(na.omit(dataset$poverty_1.90))
-# las últimas dos tienen la misma, asi que usaremos el umbral más bajo
-
-# usar un dataset más pequeño para ploteo
-data2 <- dataset[dataset$year >= 1980, c(1,3,5,8,9)]
-
-# imputar datos perdidos
-paises <- unique(data2$ctry_code)
-for(i in paises){
-  # la función na_interpolate requiere como mínimo 2 valores no nulos
-  # imputamos pobreza
-  if(sum(!is.na(data2$poverty_1.90[data2$ctry_code==i]))>2){
-    data2$poverty_1.90[data2$ctry_code==i] <- data2$poverty_1.90[data2$ctry_code==i] %>% 
-      na_interpolation()
-  } else {
-    data2 <- data2[!data2$ctry_code==i,]
-  }
-  # imputamos matrícula escolar
-  if(sum(!is.na(data2$sch_enroll[data2$ctry_code==i]))>2){
-    data2$sch_enroll[data2$ctry_code==i] <- data2$sch_enroll[data2$ctry_code==i] %>% 
-      na_interpolation()
-  } else {
-    data2 <- data2[!data2$ctry_code==i,]
-  }
-  #imputamos esperanza de vida
-  if(sum(!is.na(data2$lifexpect[data2$ctry_code==i]))>2){
-    data2$lifexpect[data2$ctry_code==i] <- data2$lifexpect[data2$ctry_code==i] %>% 
-      na_interpolation()
-  } else {
-    data2 <- data2[!data2$ctry_code==i,]
-  }
-}
-rm(i, paises)
-
-# primer plot animado
-desa_humano <- ggplot(data2, aes(poverty_1.90, sch_enroll, 
-                                   size = lifexpect, 
-                                   label = ctry_code,
-                                   colour = ifelse(ctry_code=="CHL", "red", "black"))) +
-  theme_bw() +
-  geom_text() +
-  guides(colour = F) +
-  theme(text = element_text(size = 25)) +
-  labs(title = "Año: {frame_time}", 
-       x = "% personas viviendo con menos de 1.90 USD al día",
-       y = "% bruto matrícula educación primaria",
-       size = "Esperanza \nde vida") +
-  transition_time(year) 
+library(imputeTS); library(gifski); library(patchwork); library(WDI); 
+library(countrycode) ; library(vdem); library(survey); library(convey)
 
 
-animate(desa_humano,  duration = 30, width = 900)
-# se pueden alterar dimensiones de gráfica con width = x, height = y
-rm(desa_humano)
-
-# plotear el IDH
-idh <- dataset[, c(1,2,15)]
-idh <- na.omit(idh)
-
-# manipular el dataset
-idh2 <- idh %>% filter(year == 1970 | year == 2015)
-
-# plot de la IDH en américa latina
-ggplot(idh2, aes(idh, reorder(ctry, -idh))) +
-  theme_bw() +
-  theme(text = element_text(size = 20), legend.position = "top",
-        axis.text.y = element_text(size = 10)) +
-  geom_line(aes(group = ctry, color = ifelse(ctry == "Chile", "red", "black"))) +
-  geom_point(aes(color = as.factor(year)), size = 3) +
-  # geom_text(aes(label = as.factor(year), color = as.factor(year)), size = 3) +
-  scale_x_continuous(limits = c(0,1)) +
-  scale_color_discrete(breaks = c(1970, 2015)) +
-  labs(x = "Índice de Desarrollo Humano",
-       y = "", color = "")
+options(scipen = 999)
 
 
-# recortar dataset 
-data3 <- dataset[,c(1,3,15,16)]
+# importando dataset del desarrollo humano
+HDI <- read.csv("HDI.csv")
+colnames(HDI)[4] <- "hdi"
 
-# imputar 
-paises <- unique(data3$ctry_code)
-for(i in paises){
-  # la función na_interpolate requiere como mínimo 2 valores no nulos
-  # imputamos pobreza
-  if(sum(!is.na(data3$idh[data3$ctry_code==i]))>2){
-    data3$idh[data3$ctry_code==i] <- data3$idh[data3$ctry_code==i] %>% 
-      na_interpolation()
-  } else {
-    data3 <- data3[!data3$ctry_code==i,]
-  }
-  # imputamos matrícula escolar
-  if(sum(!is.na(data3$egaldem[data3$ctry_code==i]))>2){
-    data3$egaldem[data3$ctry_code==i] <- data3$egaldem[data3$ctry_code==i] %>% 
-      na_interpolation()
-  } else {
-    data3 <- data3[!data3$ctry_code==i,]
-  }
-}
-rm(i, paises)
+HDI$continent <- countrycode(HDI$Code, origin = "iso3c", destination = "continent")
 
-# generar plot de relación IDH vs democracia igualitaria
-idh_egaldem <- ggplot(data3, aes(idh, egaldem, 
-                  colour = ifelse(ctry_code=="CHL", "red", "black"))) +
-  theme_bw() +
-  theme(legend.position = "none",
-        text = element_text(size = 25),
-        plot.title = element_text(hjust = .5, size = 40, face = "bold")) +
-  geom_text(aes(label = ctry_code, fontface = 2, size = 20) ) +
-  scale_x_continuous(limits = c(0,1)) +
+
+# generando el promedio anual
+yearhdi <- HDI %>%
+  group_by(Year, continent) %>%
+  summarize(meanhdi= mean(hdi))
+
+
+# graficar el HDI
+hdi_plot <- ggplot(yearhdi, aes(Year, meanhdi, color= reorder(continent, -meanhdi))) +
+  theme_classic() +
+  geom_line() +
+  scale_x_continuous(breaks = seq(1870, 2015, 30)) +
   scale_y_continuous(limits = c(0,1)) +
-  labs(title = "Año: {frame_time}",
-       x = "IDH",
-     y = "Índice democracia igualitaria") +
-  transition_time(year)
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x="", y= "Índice de Desarrollo Humano", color ="")
+
+
+
+# sacando datos del vdem
+ed_vdem <- extract_vdem(name_pattern = "v2x_polyarchy",
+                        include_external = F) 
+ed_vdem <- select(ed_vdem, c(2, 4, 24, 31))
+
+#agrupar por continente
+ed_vdem <- ed_vdem %>%
+  group_by(year, extended_continent) %>%
+  summarize(meandemo = mean(v2x_polyarchy, na.rm = T))
+
+
+
+# graficar el nivel de democracia
+demo_plot <- ggplot(ed_vdem %>% na.omit(), aes(year, meandemo, 
+                    color= reorder(extended_continent, -meandemo))) +
+  theme_classic() +
+  geom_line() +
+  # scale_x_continuous(breaks = seq(1870, 2015, 10)) +
+  scale_y_continuous(limits = c(0,1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x="", y= "Índice de Democracia Electoral", color ="")
+
+
+hdi_plot + demo_plot + plot_layout(guides = "collect") +
+  plot_annotation(title = "Un desarrollo complejo", 
+                  theme = theme(plot.title = element_text(hjust = .5))) 
+
+
+descargar_casen_github(carpeta = "casenes")
+
+
+ch_names <- function(data, vars){
+  colnames(data) <- vars
+  return(data)
+}
+
+
+c1990 <- read_rds("casenes/1990.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut")) %>%
+  filter(edad>= 20 & edad <= 60)
+
+c1992 <- read_rds("casenes/1992.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c1994 <- read_rds("casenes/1994.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c1996 <- read_rds("casenes/1996.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c1998 <- read_rds("casenes/1998.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2000 <- read_rds("casenes/2000.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2003 <- read_rds("casenes/2003.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2006 <- read_rds("casenes/2006.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "r", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2009 <- read_rds("casenes/2009.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "region", "expr", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2011 <- read_rds("casenes/2011.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "region", "expr_full", "esc", "yautaj") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2013 <- read_rds("casenes/2013.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "region", "expr", "esc", "yautcor") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2015 <- read_rds("casenes/2015.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "region", "expr", "esc", "yaut") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+c2017 <- read_rds("casenes/2017.rds") %>% 
+  as.data.frame() %>%
+  select("edad", "sexo", "region", "expr", "esc", "yaut") %>%
+  ch_names(vars = c("edad", "sexo", "region", "expr", "esc", "yaut"))%>%
+  filter(edad>= 20 & edad <= 60)
+
+
+
+sv1990 <- svydesign(data = c1990, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv1992 <- svydesign(data = c1992, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv1994 <- svydesign(data = c1994, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv1996 <- svydesign(data = c1996, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv1998 <- svydesign(data = c1998, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2000 <- svydesign(data = c2000, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2003 <- svydesign(data = c2003, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2006 <- svydesign(data = c2006, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2009 <- svydesign(data = c2009, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2011 <- svydesign(data = c2011, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2013 <- svydesign(data = c2013, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2015 <- svydesign(data = c2015, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+sv2017 <- svydesign(data = c2017, 
+                    ids = ~region,
+                    nest = T,
+                    weights = ~expr)
+
+
+cp1990 <- convey_prep(sv1990)
+cp1992 <- convey_prep(sv1992)
+cp1994 <- convey_prep(sv1994)
+cp1996 <- convey_prep(sv1996)
+cp1998 <- convey_prep(sv1998)
+cp2000 <- convey_prep(sv2000)
+cp2003 <- convey_prep(sv2003)
+cp2006 <- convey_prep(sv2006)
+cp2009 <- convey_prep(sv2009)
+cp2011 <- convey_prep(sv2011)
+cp2013 <- convey_prep(sv2013)
+cp2015 <- convey_prep(sv2015)
+cp2017 <- convey_prep(sv2017)
+
+
+lorenz1990 <- svylorenz(~yaut, cp1990, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz1992 <- svylorenz(~yaut, cp1992, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz1994 <- svylorenz(~yaut, cp1994, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz1996 <- svylorenz(~yaut, cp1996, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz1998 <- svylorenz(~yaut, cp1998, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2000 <- svylorenz(~yaut, cp2000, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2003 <- svylorenz(~yaut, cp2003, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2006 <- svylorenz(~yaut, cp2006, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2009 <- svylorenz(~yaut, cp2009, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2011 <- svylorenz(~yaut, cp2011, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2013 <- svylorenz(~yaut, cp2013, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2015 <- svylorenz(~yaut, cp2015, quantiles = seq(0,1,.05), na.rm = TRUE)
+lorenz2017 <- svylorenz(~yaut, cp2017, quantiles = seq(0,1,.05), na.rm = TRUE)
+
+
+lista <- list(lorenz1990, 
+              lorenz1992 ,
+              lorenz1994 ,
+              lorenz1996 ,
+              lorenz1998 ,
+              lorenz2000 ,
+              lorenz2003 ,
+              lorenz2006 ,
+              lorenz2009 ,
+              lorenz2011 ,
+              lorenz2013 ,
+              lorenz2015 ,
+              lorenz2017) 
+
+
+lorenz_hist <- function(list){
   
-# crear gif
-animate(idh_egaldem,  duration = 30, width = 900)
+  ls <- list()
+  y <- c(seq(1990, 2000, 2), seq(2003, 2017, 2))
+  
+  for (i in 1:length(list)) {
+    
 
-# jugando con datos de google trends
-data4 <- dataset %>% filter(ctry_code == "CHL" & year >= 2000) %>% 
-  select(1, 15:17)
+    lorenz.data <- list[[i]][1] %>% 
+      as.data.frame() %>%
+      t() %>%
+      as.data.frame()
+    
+    rownames(lorenz.data) <- NULL
+    
+    lorenz.data$quantiles <- seq(0,1,.05)
+    
+    lorenz.data$year <- y[i]
+    
+    colnames(lorenz.data)[1] <- "share"
+    
+    lorenz.data <- lorenz.data[, c(3, 2, 1)]
 
-# imputando
-data4$idh <- data4$idh %>% na_interpolation()
-data4$egaldem <- data4$egaldem %>% na_interpolation()
-data4$protest_google_search <- data4$protest_google_search %>% na_interpolation()
+    ls[[i]] <- lorenz.data
+  }
 
-# plot
-ggplot(data4, aes(idh, egaldem, alpha = protest_google_search)) +
-  theme_bw()+
-  geom_smooth(show.legend = F, color = "red") +
-  geom_text(aes(label = year, fontface = 2), angle = 90, size = 10,
-          position=position_jitter(width=.007,height=.007)) +
-  theme(legend.position = "top", text = element_text(size = 20)) +
-  scale_y_continuous(limits = c(0,1)) +
-  labs(x = "IDH", y = "Índice de Democracia igualitaria", 
-       alpha = 'Búsquedas de "Protesta" \nen Google, Chile')
+  return(do.call("rbind", ls) )
+}
 
 
-# ================ BONUS =========================
-# En esta sección visualizamos que tal anda la liberería "imputeTS"
+df_lorenz <- lorenz_hist(lista)
 
-CL <- data2 %>% filter(ctry_code == "CHL")
-AR <- data2 %>% filter(ctry_code == "ARG")
 
-CL$pov.imputed <- CL$poverty_1.90 %>% na.interpolation()
-AR$pov.imputed <- AR$poverty_1.90 %>% na.interpolation()
+ggplot(df_lorenz, aes(quantiles, share, group= year, color=year)) +
+  theme_classic() +
+  geom_line() +
+  geom_line(aes(y= quantiles), color = "red") +
+  scale_color_continuous(low= "black", high= "green") +
+  labs(x= "% población", y= "% ingreso", color = "Año", 
+       title = "Evolución distribución ingreso Chile 1990 - 2017",
+       subtitle = "Usando ingreso autónomo")
 
-dat <- rbind(CL, AR)
 
-ggplot(dat, aes(year)) +
-  geom_point(aes(y = pov.imputed, colour = "Imputado")) +
-  geom_point(aes(y = poverty_1.90, colour = "Observado")) +
-  facet_wrap(.~ctry_code) +
-  theme_light() +
-  theme(axis.text.x = element_text(angle = 90), legend.position = "top") +
-  labs(x = "", y = "% personas que vive con menos de 1.90 usd al día", colour = "")
 
-# como pueden observar, funciona bastante bien, pero es importante que casos tengan
-# valores no nulos en el t0 del intervalo de comparación
+
+
+
+
 
 
 
