@@ -1,7 +1,8 @@
 # setear librerías de trabajo
 library(tidyverse); library(gganimate); library(transformr); 
 library(imputeTS); library(gifski); library(patchwork); library(WDI); 
-library(countrycode) ; library(vdem); library(survey); library(convey)
+library(countrycode) ; library(vdem); library(survey); library(convey);
+library(readxl)
 
 
 options(scipen = 999)
@@ -11,7 +12,9 @@ options(scipen = 999)
 HDI <- read.csv("HDI.csv")
 colnames(HDI)[4] <- "hdi"
 
-HDI$continent <- countrycode(HDI$Code, origin = "iso3c", destination = "continent")
+HDI$continent <- countrycode(HDI$Code,
+                             origin = "iso3c", 
+                             destination = "continent")
 
 
 # generando el promedio anual
@@ -29,8 +32,6 @@ hdi_plot <- ggplot(yearhdi, aes(Year, meanhdi, color= reorder(continent, -meanhd
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x="", y= "Índice de Desarrollo Humano", color ="")
 
-
-
 # sacando datos del vdem
 ed_vdem <- extract_vdem(name_pattern = "v2x_polyarchy",
                         include_external = F) 
@@ -40,7 +41,6 @@ ed_vdem <- select(ed_vdem, c(2, 4, 24, 31))
 ed_vdem <- ed_vdem %>%
   group_by(year, extended_continent) %>%
   summarize(meandemo = mean(v2x_polyarchy, na.rm = T))
-
 
 
 # graficar el nivel de democracia
@@ -58,6 +58,8 @@ hdi_plot + demo_plot + plot_layout(guides = "collect") +
   plot_annotation(title = "Un desarrollo complejo", 
                   theme = theme(plot.title = element_text(hjust = .5))) 
 
+
+# ======================= CONSTRUCCIÓN CURVAS DE LORENZ ANUALES =======================
 
 descargar_casen_github(carpeta = "casenes")
 
@@ -259,10 +261,17 @@ lista <- list(lorenz1990,
               lorenz2017) 
 
 
+length(lista)
+y <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
+
+length(y)
+
+
+
 lorenz_hist <- function(list){
   
   ls <- list()
-  y <- c(seq(1990, 2000, 2), seq(2003, 2017, 2))
+  y <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
   
   for (i in 1:length(list)) {
     
@@ -292,20 +301,80 @@ lorenz_hist <- function(list){
 df_lorenz <- lorenz_hist(lista)
 
 
-ggplot(df_lorenz, aes(quantiles, share, group= year, color=year)) +
+ggplot(df_lorenz %>% filter(year %in% c(1990, 2000, 2009, 2017)),
+       aes(quantiles, share, group= year, color=as.factor(reorder(year, -year)))) +
   theme_classic() +
   geom_line() +
-  geom_line(aes(y= quantiles), color = "red") +
-  scale_color_continuous(low= "black", high= "green") +
+  geom_line(aes(y= quantiles), color = "black") +
+  # scale_color_gradient(low= "black", 
+  #                       high= "green", 
+  #                       limits= c(1990, 2017)) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(plot.caption.position = "plot") +
   labs(x= "% población", y= "% ingreso", color = "Año", 
        title = "Evolución distribución ingreso Chile 1990 - 2017",
-       subtitle = "Usando ingreso autónomo")
+       subtitle = "Ingreso autónomo población 20 a 60 años. Se usaron expansores regionales",
+       caption = "Elaboración propia con base CASEN 1990 a 2017")
+
+df_lorenz$diff_share <- 1 - df_lorenz$share
+
+#====================== CONSTRUCCIÓN DE GRÁFICAS DE DEMOCRACIA EN LATAM =====
 
 
+# sacando datos del vdem
+ed_vdem <- extract_vdem(name_pattern = "v2x_polyarchy",
+                        include_external = F) 
+ed_vdem <- select(ed_vdem, c(1, 2, 4, 24, 30))
 
 
+polity <- read_xls("p5v2018.xls") %>% select(c(4:6, 11, 12))
+polity$region <- countrycode(polity$scode,
+                             origin = "p4c", 
+                             destination = "region23")
+polity$iso3  <- countrycode(polity$scode,
+                            origin = "p4c", 
+                            destination = "iso3c")
+
+polity <- polity %>%
+  filter(region %in% c("Central America","South America" ))
 
 
+# filtrando por latam
+ed_vdem <- ed_vdem %>% 
+  filter(extended_region %in% c("Central America","South America" ))
+
+vplot <- ggplot(ed_vdem %>% filter(year >= 1960), 
+       aes(year,v2x_polyarchy, 
+           color =reorder(vdem_country_text_id, -v2x_polyarchy))) +
+  theme_classic() +
+  geom_line() +
+  facet_wrap(.~extended_region, nrow = 2) +
+  geom_vline(xintercept = 1990) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(x="", y= "",
+       subtitle = "Índice de Democracia Electoral (0 a 1)", 
+       color="")
+
+
+p.plot <- ggplot(polity %>% filter(year >= 1960), 
+       aes(year,polity2, 
+           color =reorder(iso3, -polity2))) +
+  theme_classic() +
+  geom_line() +
+  facet_wrap(.~region, nrow = 2) +
+  geom_vline(xintercept = 1990) +
+  geom_hline(yintercept = 0) +
+  scale_y_continuous(limits = c(-10, 10)) +
+  theme(legend.position = "none") +
+  labs(x="", y= "", 
+       subtitle = "Índice Democracia Polity IV (-10 a 10)",
+       color="")
+
+vplot + p.plot + 
+  plot_layout(guides = "collect") +
+  plot_annotation(title = "La ola democrática en Latam",
+                  caption = "Elaboración propia con base a V-dem y Polity IV")
 
 
 
