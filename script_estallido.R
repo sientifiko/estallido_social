@@ -8,6 +8,47 @@ library(readxl)
 options(scipen = 999)
 
 
+# ======= FUNCIONES A UTILIZAR EN EL SCRIPT ========
+# Puedes colapsar esto si quieres ir directo al código
+
+# función que imputa los datos de una variable según determinada agregación
+interpolacion <- function(data, agregacion, variable){
+  #' @param data un df
+  #' @param agregacion el nivel de agregación de la serie (eg, pais, región, etc)
+  #' @param variable la variable a ser imputada
+  #' @return el mismo df, pero con la columna de valores imputaados
+  
+
+  require(tidyverse)
+  agg <- data %>% select(!!agregacion) %>% unique()
+  tls <- list()
+  
+  
+  for(i in 1:nrow(agg)){
+    
+    tls[[i]] <- data[ data[[agregacion]] == agg[i,1], ][[variable]] %>%
+      na_kalman(model = "StructTS")
+    
+  }
+  
+  dat <- do.call("rbind", tls) %>%
+    t() %>%
+    as.data.frame()
+  
+  dat <- dat %>%
+    gather("", "value", 1:ncol(dat))
+  
+  data[[paste0("imp.", variable)]] <- dat[["value"]]
+  
+  return(data)
+  
+}# fin función
+
+
+
+
+# ====================== INTRODUCCIÓN===============
+
 # importando dataset del desarrollo humano
 HDI <- read.csv("HDI.csv")
 colnames(HDI)[4] <- "hdi"
@@ -61,7 +102,7 @@ hdi_plot + demo_plot + plot_layout(guides = "collect") +
 
 # ======================= CONSTRUCCIÓN CURVAS DE LORENZ ANUALES =======================
 
-descargar_casen_github(carpeta = "casenes")
+descgtmar_casen_github(carpeta = "casenes")
 
 
 ch_names <- function(data, vars){
@@ -319,7 +360,7 @@ ggplot(df_lorenz %>% filter(year %in% c(1990, 2000, 2009, 2017)),
 
 df_lorenz$diff_share <- 1 - df_lorenz$share
 
-#====================== CONSTRUCCIÓN DE GRÁFICAS DE DEMOCRACIA EN LATAM =====
+#================== CONSTRUCCIÓN DE GRÁFICAS DE DEMOCRACIA EN LATAM =====
 
 
 # sacando datos del vdem
@@ -374,7 +415,99 @@ p.plot <- ggplot(polity %>% filter(year >= 1960),
 vplot + p.plot + 
   plot_layout(guides = "collect") +
   plot_annotation(title = "La ola democrática en Latam",
-                  caption = "Elaboración propia con base a V-dem y Polity IV")
+                  caption = "Elaboración propia con base a V-dem y Polity IV") &
+  theme(legend.position = "none")
+
+
+# ============== CONSTRUCCIÓN DE GRÁFICAS DE DESARROLLO EN LATAM ======
+
+
+
+pov320usd <- WDI(indicator = "SI.POV.LMIC", 
+                 start = 1980, 
+                 end = 2020)
+
+pov320usd$region <- countrycode(pov320usd$iso2c,
+                                origin = "iso2c",
+                                destination = "region23")
+
+pov320usd <- pov320usd %>%
+  filter(region %in% c("Central America","South America" ))
+colnames(pov320usd)[3] <- "poverty.320"
+
+
+ctrys <- pov320usd %>% 
+  filter(year %in% 1980:1990 & !is.na(poverty.320)) %>%
+  select(country) %>% 
+  unique()
+
+
+pov320usd2 <- pov320usd[pov320usd$country %in% ctrys$country,]
+
+pov320usd2 <- interpolacion(pov320usd2, "country", "poverty.320")
+
+
+grp.pov <- pov320usd2 %>%
+  filter(year %in% c(1990, 2020)) %>%
+    select(country, year, imp.poverty.320)
+
+
+pov.plot <- ggplot(grp.pov, aes(reorder(country, 
+                            imp.poverty.320), 
+                    imp.poverty.320, 
+                    group= country)) +
+  theme_minimal() +
+  geom_line(color = "black") +
+  geom_point(aes( shape= as.factor(year),
+                  color= as.factor(year)), size=3) +
+  coord_flip() +
+  theme(legend.position = "top",
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor = element_blank()) +
+  labs(color="", shape= "", 
+       x="", y ="% personas viviendo con menos \nde 3.20 USD al día")
+  
+
+dif.pov <- grp.pov %>%
+  spread(2, 3)
+
+dif.pov$dif <- dif.pov$`2020` -  dif.pov$`1990`
+
+pov.plot2 <- ggplot(dif.pov, aes(reorder(country, -dif), dif)) +
+  theme_classic() +
+  geom_bar(stat = "identity", 
+           fill=ifelse(dif.pov$dif>0, "darkred", "darkgreen")) +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x="", y= "Variación pobreza índice 3.20 USD, \nentre 1990 y 2020")
+
+
+pov.plot + pov.plot2 +
+  plot_annotation(title = "La reducción de la pobreza en Latam",
+                  theme = theme(plot.title = element_text(hjust = .5)),
+                  caption = "PPC al 2011, elaboración propia con base a \ndatos del Banco Mundial")
+
+
+
+
+pov320usd %>% 
+  filter(country %in% c("Argentina", "Chile"))
+
+
+ggplot(pov320usd2 %>% 
+         filter(country %in% c("Argentina", "Chile")),
+       aes(year, imp.poverty.320,
+           shape=country,
+           color=is.na(poverty.320))) +
+  theme_classic() +
+  geom_point() +
+  geom_line(aes(group=country)) +
+  labs(x="", y="%",
+       shape="", color="Es dato imputado?",
+       title = "Porcentaje personas que viven con 3.20 USD o menos al día")
+
+
+
 
 
 
